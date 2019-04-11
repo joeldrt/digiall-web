@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39918750-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-39918750-3');
+    </script>
 
     <!--- basic page needs
     ================================================== -->
@@ -567,17 +576,17 @@
         </div> <!-- end section-header -->
         <div class="row">
             <div class="col-six text-left">
-                <form>
+                <form class="digiall-contact-form">
                     <div>
-                        <label for="sampleInput" style="color: white !important; font-size: 1.8rem;">Email</label>
+                        <label for="sampleInput">Email</label>
                         <input class="full-width" type="email" placeholder="test@mailbox.com" id="sampleInput">
                     </div>
                     <div>
-                        <label for="sampleInput" style="color: white !important; font-size: 1.8rem;">Nombre</label>
-                        <input class="full-width" type="email" placeholder="nombre" id="sampleInput">
+                        <label for="sampleInput">Nombre</label>
+                        <input class="full-width" type="text" placeholder="nombre" id="sampleInput">
                     </div>
                     
-                    <label for="exampleMessage" style="color: white !important; font-size: 1.8rem;">Mensaje</label>
+                    <label for="exampleMessage">Mensaje</label>
                     <textarea class="full-width" placeholder="Tu mensaje" id="exampleMessage"></textarea>
                 
                     <input class="btn full-width" type="submit" value="Submit">

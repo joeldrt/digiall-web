@@ -8,3 +8,16 @@
 .contacto-style a {
     color: white !important;
 }
+
+.digiall-contact-form label {
+    color: white !important; 
+    font-size: 1.8rem;
+}
+
+.digiall-contact-form input {
+    color: white !important;
+}
+
+.digiall-contact-form textarea {
+    color: white !important;
+}
