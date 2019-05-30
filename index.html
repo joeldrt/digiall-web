@@ -20,7 +20,7 @@
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <!-- CSS
     ================================================== -->
@@ -64,7 +64,7 @@
         <div class="row">
             <div class="header-logo">
                 <a class="site-logo smoothscroll" href="#top">
-                    <img src="assets/images/logo.png" alt="Homepage">
+                    <img src="assets/images/dlogo.png" alt="Homepage">
                 </a>
             </div>
     
@@ -576,21 +576,20 @@
         </div> <!-- end section-header -->
         <div class="row">
             <div class="col-six text-left">
-                <form class="digiall-contact-form">
+                <form class="digiall-contact-form" name="contactform">
                     <div>
-                        <label for="sampleInput">Email</label>
-                        <input class="full-width" type="email" placeholder="test@mailbox.com" id="sampleInput">
+                        <label for="mail">Mail</label>
+                        <input name="mail" class="full-width" type="email" placeholder="test@mailbox.com" id="mail" required>
                     </div>
                     <div>
-                        <label for="sampleInput">Nombre</label>
-                        <input class="full-width" type="text" placeholder="nombre" id="sampleInput">
+                        <label for="name">Nombre</label>
+                        <input name="name" class="full-width" type="text" placeholder="nombre" id="name" required>
                     </div>
                     
-                    <label for="exampleMessage">Mensaje</label>
-                    <textarea class="full-width" placeholder="Tu mensaje" id="exampleMessage"></textarea>
-                
-                    <input class="btn full-width" type="submit" value="Submit">
+                    <label for="message">Mensaje</label>
+                    <textarea name="message" class="full-width" placeholder="Tu mensaje" id="message" required></textarea>
                 </form>
+                <button class="btn full-width" onclick="postForm()">enviar</button>
             </div> 
             <div class="col-six">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d942.8401707729715!2d-98.23308427078722!3d19.047873099194017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc72626f8325b%3A0x6bd83756948de91c!2sDigiall!5e0!3m2!1ses!2smx!4v1554973787441!5m2!1ses!2smx" width="100%" height="660px" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -614,15 +613,15 @@
     <footer class="s-footer footer">
 
         <div class="row section-header align-center">
-            <div class="col-full">
-                <img src="assets/images/logo2x.png">
-                <h1 class="display-1">
-                    Life Solutions.
-                </h1>
+            <div style="width: 33%; margin-left: auto; margin-right: auto;">
+                <img src="assets/images/dlogo.png">
                 <!-- <p class="lead">
                 Subscribe for updates, special offers, and other amazing stuff.
                 </p> -->
             </div>
+            <h1 class="display-1">
+                technology partner
+            </h1>
         </div> <!-- end section-header -->
 
         <!-- <div class="row footer__top">
@@ -647,7 +646,7 @@
 
             <div class="footer__about col-five tab-full left">
 
-                <h4>Digiall - Life Solutions.</h4>
+                <h4>Digiall - technology partner.</h4>
 
                 <p>
                 Es una empresa Mexicana comprometida con la sociedad. Buscando siempre una mejora social ponemos nuestros conocimientos y todo el esfuerzo en cada proyecto que se nos presenta.
@@ -710,4 +709,40 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/free-simple-slider.js"></script>
     <script src="assets/js/scripts.js"></script>
+
+    <script>
+        function postForm() {
+            var data = {
+                name: $("#name").val(),
+                mail: $("#mail").val(),
+                message: $("#message").val()
+            };
+            if(data.name == null || data.name == '') {
+                alert('hace falta el nombre');
+                $("#name").focus();
+                return;
+            }
+            if(data.mail == null || data.mail == '') {
+                alert('sin tu correo nos será dificil contactarte');
+                $("#mail").focus();
+                return;
+            }
+            if(data.message == null || data.message == '') {
+                alert('pon algo que nos quieras decir');
+                $("#message").focus();
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "form-to-mail.php",
+                data: data,
+                success: function(){
+                    alert('Gracias, en breve nos comunicaremos contigo... saludos.');
+                    $("#name").val('');
+                    $("#mail").val('');
+                    $("#message").val('');
+                }
+            });
+        }
+    </script>
 </body>
